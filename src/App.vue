@@ -3,13 +3,19 @@
       setup() {
           const name = 'John Doe';
 
-          return {name};
+          const greeting = () => {
+              alert('welcome ' + name);
+          }
+          return {name, greeting };
       }
   }
 </script>
 
 <template>
-  <div>{{ name }}</div>
+  <div>
+      <h3>{{ name }}</h3>
+      <button @click="greeting">Greetings</button>
+  </div>
 </template>
 
 <style scoped>
