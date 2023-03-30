@@ -1,5 +1,10 @@
 <template>
+  <div style="margin-top: 10px">
+      <strong>{{ name }} : </strong>
+      <span>{{price}}</span><br>
 
+      <button @click="addToCart">Add to Cart</button>
+  </div>
 </template>
 
 <script>
@@ -9,9 +14,10 @@ export default {
         name: String,
         price: Number
     },
-    setup(props, context) {
-        console.log(props.name);
-        console.log(props.price);
+    setup(props, {attr, slots, emit}) {
+        const addToCart = () => emit('addToCart', props.name);
+
+        return { addToCart }
     }
 }
 </script>

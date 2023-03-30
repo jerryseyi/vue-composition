@@ -6,10 +6,10 @@
       setup() {
           const name = 'John Doe';
 
-          const greeting = () => {
-              alert('welcome ' + name);
-          }
-          return {name, greeting };
+          const greeting = () => alert('welcome ' + name);
+          const addItemToCart = (item) => alert(`one ${item} added to cart`);
+
+          return {name, greeting, addItemToCart };
       }
   }
 </script>
@@ -18,7 +18,8 @@
   <div>
       <h3>{{ name }}</h3>
       <button @click="greeting">Greetings</button>
-      <Product name="Laptop" :price="1300"/>
+      <br>
+      <Product name="Laptop" :price="1300" @addToCart="addItemToCart"/>
   </div>
 </template>
 
