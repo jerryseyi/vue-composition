@@ -1,30 +1,22 @@
-<script>
-import Product from "./components/Product.vue";
+<script setup>
 import {provide, reactive, ref, watch} from "vue";
+import Product from "./components/Product.vue";
 
-export default {
-    components: {Product},
-    setup() {
-        provide("currency", "$");
-        const name = ref('John Doe');
-        const products = reactive([
-            {name: 'Laptop', price: 1300},
-                {name: 'Phone', price: 500},
-                {name: 'Tv', price: 400}
-        ]);
+provide("currency", "$");
+const name = ref('John Doe');
+const products = reactive([
+    {name: 'Laptop', price: 1300},
+    {name: 'Phone', price: 500},
+    {name: 'Tv', price: 400}
+]);
 
-        const cart = reactive([]);
-        const greeting = () => alert('welcome ' + name);
-        const addItemToCart = (item) => cart.push(item);
-        watch(
-            [name, () => [...cart]],
-            (newValue, oldValue) => console.log(newValue, oldValue),
-            {deep: true});
-
-        return {name, greeting, addItemToCart, products};
-    },
-
-}
+const cart = reactive([]);
+const greeting = () => alert('welcome ' + name);
+const addItemToCart = (item) => cart.push(item);
+watch(
+    [name, () => [...cart]],
+    (newValue, oldValue) => console.log(newValue, oldValue),
+    {deep: true});
 </script>
 
 <template>
@@ -35,11 +27,11 @@ export default {
         <button @click="greeting">Greetings</button>
         <br>
         <Product
-            v-for="product in products"
-            :key="product.name"
-            :name="product.name"
-            :price="product.price"
-            @addToCart="addItemToCart"
+                v-for="product in products"
+                :key="product.name"
+                :name="product.name"
+                :price="product.price"
+                @addToCart="addItemToCart"
         />
     </div>
 </template>

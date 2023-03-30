@@ -7,23 +7,16 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import ProductPrice from "./ProductPrice.vue";
+const props = defineProps({
+    name: String,
+    price: Number
+})
 
-export default {
-    name: "Product",
-    components: {ProductPrice},
-    props: {
-        name: String,
-        price: Number
-    },
-    setup(props, {attr, slots, emit}) {
-        const addToCart = () => emit('addToCart', props.name);
+const emit = defineEmits(['addToCart']);
+const addToCart = () => emit('addToCart', props.name);
 
-        return { addToCart }
-    },
-
-}
 </script>
 
 <style scoped>
