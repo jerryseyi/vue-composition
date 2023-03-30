@@ -1,22 +1,28 @@
 <script>
   import Product from "./components/Product.vue";
+  import {ref} from "vue";
 
   export default {
       components: {Product},
       setup() {
-          const name = 'John Doe';
-
+          const name = ref('John Doe');
+          console.log(name, name.value, 'from setup');
           const greeting = () => alert('welcome ' + name);
           const addItemToCart = (item) => alert(`one ${item} added to cart`);
 
           return {name, greeting, addItemToCart };
+      },
+
+      created() {
+          console.log(this.name, 'created hook');
       }
   }
 </script>
 
 <template>
   <div>
-      <h3>{{ name }}</h3>
+<!--      no need to use .value in the template-->
+      <input type="text" v-model="name"><h3>{{ name }}</h3>
       <button @click="greeting">Greetings</button>
       <br>
       <Product name="Laptop" :price="1300" @addToCart="addItemToCart"/>
