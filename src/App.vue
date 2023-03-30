@@ -15,7 +15,7 @@ export default {
         const greeting = () => alert('welcome ' + name);
         const addItemToCart = (item) => cart.push(item);
         watch(
-            () => [...cart],
+            [name, () => [...cart]],
             (newValue, oldValue) => console.log(newValue, oldValue),
             {deep: true});
 
