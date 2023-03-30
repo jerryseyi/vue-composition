@@ -1,5 +1,8 @@
 <script>
+  import Product from "./components/Product.vue";
+
   export default {
+      components: {Product},
       setup() {
           const name = 'John Doe';
 
@@ -15,6 +18,7 @@
   <div>
       <h3>{{ name }}</h3>
       <button @click="greeting">Greetings</button>
+      <Product name="Laptop" :price="1300"/>
   </div>
 </template>
 
