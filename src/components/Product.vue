@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import {computed} from "vue";
+
 export default {
     name: "Product",
     props: {
@@ -16,13 +18,9 @@ export default {
     },
     setup(props, {attr, slots, emit}) {
         const addToCart = () => emit('addToCart', props.name);
+        const formatPrice = computed(() => `$${props.price.toFixed(2)}`);
 
-        return { addToCart }
-    },
-    computed: {
-        formatPrice() {
-            return `$${this.price.toFixed(2)}`;
-        }
+        return { addToCart, formatPrice }
     }
 }
 </script>
