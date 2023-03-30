@@ -1,6 +1,6 @@
 <script>
   import Product from "./components/Product.vue";
-  import {reactive, ref} from "vue";
+  import {reactive, ref, watch} from "vue";
 
   export default {
       components: {Product},
@@ -9,15 +9,11 @@
           const product = reactive({name: 'Laptop', price: 1300})
           const greeting = () => alert('welcome ' + name);
           const addItemToCart = (item) => alert(`one ${item} added to cart`);
+          watch(name, (newValue, oldValue) => console.log(newValue, oldValue), {deep: true});
 
           return {name, greeting, addItemToCart, product };
       },
 
-      watch: {
-          name(newValue, oldValue) {
-              console.log(newValue, oldValue);
-          }
-      }
   }
 </script>
 
