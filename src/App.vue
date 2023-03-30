@@ -1,16 +1,18 @@
 <script>
 import Product from "./components/Product.vue";
-import {reactive, ref, watch} from "vue";
+import {provide, reactive, ref, watch} from "vue";
 
 export default {
     components: {Product},
     setup() {
+        provide("currency", "$");
         const name = ref('John Doe');
         const products = reactive([
             {name: 'Laptop', price: 1300},
                 {name: 'Phone', price: 500},
                 {name: 'Tv', price: 400}
         ]);
+
         const cart = reactive([]);
         const greeting = () => alert('welcome ' + name);
         const addItemToCart = (item) => cart.push(item);
