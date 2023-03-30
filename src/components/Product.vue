@@ -1,7 +1,7 @@
 <template>
   <div style="margin-top: 10px">
       <strong>{{ name }} : </strong>
-      <span>{{price}}</span><br>
+      <span>{{formatPrice}}</span><br>
 
       <button @click="addToCart">Add to Cart</button>
   </div>
@@ -18,6 +18,11 @@ export default {
         const addToCart = () => emit('addToCart', props.name);
 
         return { addToCart }
+    },
+    computed: {
+        formatPrice() {
+            return `$${this.price.toFixed(2)}`;
+        }
     }
 }
 </script>
