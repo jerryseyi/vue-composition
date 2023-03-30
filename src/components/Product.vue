@@ -9,9 +9,9 @@ export default {
         name: String,
         price: Number
     },
-    setup({name, price}) {
-        console.log(name);
-        console.log(price);
+    setup(props, context) {
+        console.log(props.name);
+        console.log(props.price);
     }
 }
 </script>
