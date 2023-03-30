@@ -6,7 +6,6 @@
       components: {Product},
       setup() {
           const name = ref('John Doe');
-          console.log(name, name.value, 'from setup');
           const product = reactive({name: 'Laptop', price: 1300})
           const greeting = () => alert('welcome ' + name);
           const addItemToCart = (item) => alert(`one ${item} added to cart`);
@@ -14,8 +13,10 @@
           return {name, greeting, addItemToCart, product };
       },
 
-      created() {
-          console.log(this.name, 'created hook');
+      watch: {
+          name(newValue, oldValue) {
+              console.log(newValue, oldValue);
+          }
       }
   }
 </script>

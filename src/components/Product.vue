@@ -21,7 +21,8 @@ export default {
         const formatPrice = computed(() => `$${props.price.toFixed(2)}`);
 
         return { addToCart, formatPrice }
-    }
+    },
+
 }
 </script>
 
